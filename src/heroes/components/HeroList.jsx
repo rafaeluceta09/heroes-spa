@@ -3,7 +3,13 @@ import { useMemo } from "react";
 import {  Cards, getHeroesByPublisher } from "../index";
 
 export const HeroList = ({ publisher }) => {
-    const heroes =useMemo(() => getHeroesByPublisher( publisher ),[publisher]); //publisher es la dependencia, cuando cambie llama la funcion
+
+    //publisher es la dependencia, cuando cambie llama la funcion
+    const heroes =useMemo(
+                    () => getHeroesByPublisher( publisher ),[publisher]
+                );
+                
+                
   return (
     <>
 
