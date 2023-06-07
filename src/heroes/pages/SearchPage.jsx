@@ -8,16 +8,17 @@ export const SearchPage = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const { q = 'a' } = queryString.parse(location.search);
+  const { q = '' } = queryString.parse(location.search);
+  const heroes = getHeroeByName(q);
 
   const { heroeToFind, onInputChange, onResetForm } = useForm({ 
-      heroeToFind : q
+        heroeToFind : q
     });
 
-  const heroes = getHeroeByName(q);
   
   const onHandledSubmit = (e) =>{
     e.preventDefault();
+    if(heroeToFind.trim().length <= 1) return;
     navigate(`?q=${ heroeToFind }`);                                                    
     
     //setHeroes( heroesx );
@@ -49,11 +50,16 @@ export const SearchPage = () => {
               <hr />
               <div className="alert alert-success">asdf</div>
               <div className="row row-cols-1 row-cols-lg-3 g-3 ">
+                
                 {
                   heroes.map( hero => 
                     <Cards {...hero }  key={ hero.id }/>
-                  )
+                    )
                 }
+                
+                    
+                  
+                
               </div>
               
 
