@@ -12,9 +12,12 @@ export const AppRouter = () => {
       <div className="container-fluid">
           <Routes>
               {/* ***** public routes ***** */}
-              <Route path="login" element ={
+              <Route path="login/*" element ={
                 <PublicRoute>
-                  <LoginPage />
+                 { /* <LoginPage /> */}
+                  <Routes>
+                    <Route path="/*" element={<LoginPage />} />
+                  </Routes> 
                 </PublicRoute>  
               } />
 
