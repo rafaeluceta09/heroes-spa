@@ -7,8 +7,9 @@ export const LoginPage = () => {
   const { login } = useContext (AuthContext);
 
   const handledLogin = () =>{
+    let lastPatch = localStorage.getItem('lastPatch') || '/';
     login('suceta', '12345');
-    navigate('/marvel', {
+    navigate(lastPatch, {
       replace : true
     });
   }

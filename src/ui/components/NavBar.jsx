@@ -8,10 +8,9 @@ export const NavBar = () => {
     const { pathname, search} = useLocation();
     const { user, logged , logout } = useContext(AuthContext);
     
-    const handleLogout = () =>{
-        
+    const handleLogout = () =>{   
         const lastPatch  = pathname + search;
-        console.log(lastPatch); 
+        localStorage.setItem('lastPatch',lastPatch);
         logout();
         navigate('/login',
                     { replace : true }
